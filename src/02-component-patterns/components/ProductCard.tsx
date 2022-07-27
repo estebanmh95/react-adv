@@ -11,7 +11,7 @@ const INITIAL_VALUE = 0;
 export const ProductContext = createContext({} as ProductContextProps);
 const ProductProvider = ProductContext.Provider;
 
-export const ProductCart = ({ product, children }: Props) => {
+export const ProductCard = ({ product, children }: Props) => {
 	const { counter, increaseBy } = useProduct(INITIAL_VALUE);
 
 	return (
@@ -26,7 +26,3 @@ export const ProductCart = ({ product, children }: Props) => {
 		</ProductProvider>
 	);
 };
-
-// ProductCart.Title = ProductTitle;
-// ProductCart.Image = ProductImage;
-// ProductCart.Buttons = ProductButtons;

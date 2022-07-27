@@ -1,6 +1,6 @@
 import styles from "../styles/styles.module.css";
 import { useContext } from "react";
-import { ProductContext } from "./ProductCart";
+import { ProductContext } from "./ProductCard";
 import noImage from "../assets/no-image.jpg";
 
 export const ProductImage = ({ img = "" }) => {

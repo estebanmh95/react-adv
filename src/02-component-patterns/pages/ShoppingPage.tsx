@@ -1,9 +1,8 @@
-import React from "react";
 import {
 	ProductButtons,
 	ProductImage,
 	ProductTitle,
-	ProductCart,
+	ProductCard,
 } from "../components";
 
 const product = {
@@ -21,16 +20,16 @@ const ShoppingPage = () => {
 			<h1>ShoppingPagssse</h1>
 			<hr />
 			<div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-				<ProductCart product={product2}>
-					<ProductCart.Image />
-					<ProductCart.Title />
-					<ProductCart.Buttons />
-				</ProductCart>
-				<ProductCart product={product}>
+				<ProductCard product={product2}>
+					<ProductCard.Image />
+					<ProductCard.Title />
+					<ProductCard.Buttons />
+				</ProductCard>
+				<ProductCard product={product}>
 					<ProductImage />
 					<ProductTitle />
 					<ProductButtons />
-				</ProductCart>
+				</ProductCard>
 			</div>
 		</div>
 	);
