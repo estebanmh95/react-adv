@@ -4,10 +4,17 @@ export interface Product {
 	id: string;
 	title: string;
 	img?: string;
+	name: string;
+}
+
+export interface Counter {
+	[key: string]: number;
 }
 
 export interface Props {
 	product: Product;
+	counter: Counter;
+	increaseBy: (value: number, name: string) => void;
 	// children?: () => JSX.Element;
 	children?: ReactElement | ReactElement[];
 }
@@ -18,8 +25,8 @@ export interface Props {
 // }
 
 export interface ProductContextProps {
-	counter: number;
-	increaseBy: (value: number) => void;
+	counter: Counter;
+	increaseBy: (value: number, name: string) => void;
 	product: Product;
 }
 

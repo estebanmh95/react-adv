@@ -6,14 +6,15 @@ import { ProductContextProps, Props } from "../interfaces/interfaces";
 // import { ProductTitle } from "./ProductTitle";
 // import { ProductImage } from "./ProductImage";
 
-const INITIAL_VALUE = 0;
-
 export const ProductContext = createContext({} as ProductContextProps);
 const ProductProvider = ProductContext.Provider;
 
-export const ProductCart = ({ product, children }: Props) => {
-	const { counter, increaseBy } = useProduct(INITIAL_VALUE);
-
+export const ProductCart = ({
+	product,
+	counter,
+	increaseBy,
+	children,
+}: Props) => {
 	return (
 		<ProductProvider
 			value={{

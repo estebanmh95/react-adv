@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { Counter } from "../interfaces/interfaces";
 
-export const useProduct = (initialValue: number = 0) => {
+export const useProduct = (initialValue = {}) => {
 	const [counter, setCounter] = useState(initialValue);
 
-	const increaseBy = (value: number) => {
-		setCounter((prev) => Math.max(prev + value, 0));
+	const increaseBy = (value: number, name: string) => {
+		setCounter((prev: Counter) => ({
+			...prev,
+			[name]: Math.max(prev[name] + value, 0),
+		}));
 	};
 	return {
 		increaseBy,
