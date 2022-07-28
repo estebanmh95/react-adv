@@ -5,43 +5,52 @@ import {
 	ProductCard,
 } from "../components";
 import "../styles/custom-styles.css";
+import { useShoppingCart } from "../hooks/useShoppingCart";
+import { products } from "../data/products";
 
-const product = {
-	id: "1",
-	title: "Bed",
-};
-const product2 = {
-	id: "2",
-	title: "Coffee Mug",
-	img: "./coffee-mug.png",
-};
 const ShoppingPage = () => {
+	const { shoppingCart, onProductCountChange } = useShoppingCart();
+
 	return (
 		<div>
-			<h1>ShoppingPagssse</h1>
+			<h1>Shopping Cart</h1>
 			<hr />
 			<div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-				<ProductCard product={product2} className="bg-dark text-white">
-					<ProductCard.Image className="custom-image" />
-					<ProductCard.Title className="text-bold" />
-					<ProductCard.Buttons className="custom-buttons" />
-				</ProductCard>
-				<ProductCard product={product} className="bg-dark text-white">
-					<ProductImage className="custom-image" />
-					<ProductTitle className="text-bold" />
-					<ProductButtons className="custom-buttons" />
-				</ProductCard>
-
-				<ProductCard
-					product={product2}
-					style={{
-						backgroundColor: "light-blue",
-					}}
-				>
-					<ProductImage className="custom-image" />
-					<ProductTitle />
-					<ProductButtons />
-				</ProductCard>
+				{products.map((product) => {
+					return (
+						<ProductCard
+							product={product}
+							className="bg-dark text-white"
+							key={product.id}
+							value={shoppingCart[product.id]?.count || 0}
+							onChange={onProductCountChange}
+						>
+							<ProductImage className="custom-image" />
+							<ProductTitle className="text-bold" />
+							<ProductButtons className="custom-buttons" />
+						</ProductCard>
+					);
+				})}
+			</div>
+			<div className="shopping-cart">
+				{Object.keys(shoppingCart).map((key) => {
+					return (
+						<ProductCard
+							product={shoppingCart[key]}
+							key={key}
+							className="bg-dark text-white"
+							style={{ width: "100px" }}
+							value={shoppingCart[key].count}
+							onChange={onProductCountChange}
+						>
+							<ProductCard.Image className="custom-image" />
+							<ProductCard.Buttons
+								className="custom-buttons"
+								style={{ display: "flex", justifyContent: "center" }}
+							/>
+						</ProductCard>
+					);
+				})}
 			</div>
 		</div>
 	);
